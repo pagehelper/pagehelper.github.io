@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Docs on MyBatis 分页插件 PageHelper</title>
+    <title>文档 on MyBatis 分页插件 PageHelper</title>
     <link>https://pagehelper.github.io/docs/</link>
-    <description>Recent content in Docs on MyBatis 分页插件 PageHelper</description>
+    <description>Recent content in 文档 on MyBatis 分页插件 PageHelper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 03 Jun 2017 17:45:41 +0800</lastBuildDate>
