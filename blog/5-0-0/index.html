@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta name="generator" content="Hugo 0.21" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> 5.0.0 版本发布 </title>
+
+  
+  <meta name="description" content="5.0.0 全新版本发布 - 2017-01-02"> 
+  
+  
+  
+  
+  
+
+    
+
+  <meta name="author" content="liuzh">
+
+
+  <meta property="og:title" content="5.0.0 版本发布" />
+<meta property="og:description" content="5.0.0 全新版本发布 - 2017-01-02" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pagehelper.github.io/blog/5-0-0/" />
+
+
+
+<meta property="article:published_time" content="2017-06-03T17:31:56&#43;08:00"/>
+<meta property="article:modified_time" content="2017-06-03T17:31:56&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://pagehelper.github.io/blog/5-0-0/">  
+  <link href="https://pagehelper.github.io/css/font.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/master.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="https://pagehelper.github.io/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="https://pagehelper.github.io/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="https://pagehelper.github.io/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="http://mybatis.tk/pagehelper/">PageHelper</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="http://mybatis.tk/pagehelper/" title="home">PageHelper</a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/docs/" >文档</a></li>
+    
+    <li><a href="/blog/" >更新日志</a></li>
+    
+    <li><a href="/faq/" >常见问题</a></li>
+    
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+<div class="push-center" itemscope itemtype="http://schema.org/BlogPosting">
+    
+<meta itemprop="name" content="5.0.0 版本发布">
+<meta itemprop="description" content="5.0.0 全新版本发布 - 2017-01-02">
+
+
+<meta itemprop="dateModified" content="2017-06-03T17:31:56&#43;08:00" />
+<meta itemprop="wordCount" content="53">
+
+
+
+<meta itemprop="keywords" content="" />
+
+<div id="hero">
+    <h1 itemprop="headline">  5.0.0 版本发布</h1>
+    
+<blockquote itemprop="description">5.0.0 全新版本发布 - 2017-01-02</blockquote>
+
+<time class="post-time"><span class="icon">
+  <i class="fa fa-clock-o" aria-hidden="true"></i>
+</span>
+<span>1 minute read</span>
+<span class="icon">
+ <i class="fa fa-pencil" aria-hidden="true"></i>
+</span>
+
+  Published: <time datetime="2017-06-03T17:31:56&#43;08:00">3 Jun, 2017</time>
+
+</time>
+</div>
+<div id="post-box">
+<div id="post" itemprop="articleBody">
+
+    
+
+<h2 id="5-0-0-2017-01-02">5.0.0 - 2017-01-02</h2>
+
+<ul>
+<li>使用 <a href="https://github.com/pagehelper/Mybatis-PageHelper/blob/master/src/main/java/com/github/pagehelper/QueryInterceptor.java">QueryInterceptor 规范</a> 处理分页逻辑</li>
+<li>新的分页插件拦截器为 <code>com.github.pagehelper.PageInterceptor</code></li>
+<li>新的 <code>PageHelper</code> 是一个特殊的 <code>Dialect</code> 实现类，以更友好的方式实现了以前的功能</li>
+<li>新的分页插件仅有 <code>dialect</code> 一个参数，默认的 <code>dialect</code> 实现类为 <code>PageHelper</code></li>
+<li><code>PageHelper</code> 仍然支持以前提供的参数，在最新的使用文档中已经全部更新</li>
+<li><code>PageHelper</code> 的 <code>helperDialect</code> 参数和以前的 <code>dialect</code> 功能一样，具体可以看文档的参数说明</li>
+<li>增加了基于纯 <code>RowBounds</code> 和 <code>PageRowBounds</code> 的分页实现，在 <code>com.github.pagehelper.dialect.rowbounds</code> 包中，这是用于作为 <code>dialect</code> 参数示例的实现，后面会补充更详细的文档</li>
+<li>去掉了不适合出现在分页插件中的 orderby 功能，以后会提供单独的排序插件</li>
+<li>去掉了 <code>PageHelper</code> 中不常用的方法</li>
+<li>新的文档，更新历来更新日志中提到的重要内容，提供英文版本文档</li>
+<li>解决 bug <a href="http://git.oschina.net/free/Mybatis_PageHelper/issues/149">#149</a></li>
+<li>将 Db2RowDialect 改为 Db2RowBoundsDialect</li>
+<li>所有分页插件抛出的异常改为 PageException</li>
+</ul>
+
+
+</div>
+
+<div class="form-subscribe">
+    <div id="form-subscribe-success" style="display: none;"></div>
+<div id="form-subscribe-box">
+        <h4>获取更新信息还可以关注下方微信公众号</h4>
+        <div class="wxgzh">
+          <img src="/images/wxgzh.jpg"/>
+        </div>
+    </div>
+</div>
+
+    <div class="">
+        <p>
+  Published
+  
+    
+      by <span itemprop="author">liuzh</span>
+    
+  
+  <time datetime="2017-06-03T17:31:56&#43;08:00">
+    3 Jun, 2017
+  </time>
+  
+  
+  using <span itemprop="wordCount">53</span> words.
+</p>
+
+        
+
+
+
+    </div>
+
+    
+
+</div>
+</div>
+</main>
+  <footer>   <footer id="footer">
+    <nav>
+      <ul>
+        <li><span>PageHelper</span></li>
+          <li>
+          <a href="/docs/">文档</a>
+        </li>
+        <li>
+          <a href="/blog/">更新日志</a>
+        </li>
+        <li>
+          <a href="/faq/">常见问题</a>
+        </li>
+      </ul>
+    </nav>
+  </footer> </footer>
+
+
+  <script src="https://pagehelper.github.io/js/kube.js" type="text/javascript">
+  </script>
+  <script src="https://pagehelper.github.io/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="https://pagehelper.github.io/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>

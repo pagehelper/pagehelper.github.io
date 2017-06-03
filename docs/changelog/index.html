@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta name="generator" content="Hugo 0.21" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> 更新历史日志 </title>
+
+  
+  <meta name="description" content="5.0 版本以前的日志记录"> 
+  
+  
+  
+  
+  
+
+    
+
+  <meta name="author" content="liuzh">
+
+
+  <meta property="og:title" content="更新历史日志" />
+<meta property="og:description" content="5.0 版本以前的日志记录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pagehelper.github.io/docs/changelog/" />
+
+
+
+<meta property="article:published_time" content="2017-06-03T17:47:43&#43;08:00"/>
+<meta property="article:modified_time" content="2017-06-03T17:47:43&#43;08:00"/>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  
+  
+
+  <link rel="canonical" href="https://pagehelper.github.io/docs/changelog/">  
+  <link href="https://pagehelper.github.io/css/font.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/kube.min.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/kube.legenda.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/highlight.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/master.css" rel="stylesheet" type="text/css">
+  <link href="https://pagehelper.github.io/css/kube.demo.css" rel="stylesheet" type="text/css">
+
+ <link href="https://pagehelper.github.io/css/custom.css" rel="stylesheet" type="text/css">
+
+  <script src="https://pagehelper.github.io/js/jquery-2.1.4.min.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript" src="https://pagehelper.github.io/js/tocbot.min.js"></script>
+</head>
+
+
+<body class="page-kube">
+  <header> <div class="show-sm">
+    <div id="nav-toggle-box">
+      <div id="nav-toggle-brand">
+        <a href="http://mybatis.tk/pagehelper/">PageHelper</a>
+      </div><a data-component="toggleme" data-target="#top" href="#" id="nav-toggle"><i class="kube-menu"></i></a>
+    </div>
+  </div>
+  <div class="hide-sm" id="top">
+    <div id="top-brand">
+      <a href="http://mybatis.tk/pagehelper/" title="home">PageHelper</a>
+    </div>
+    <nav id="top-nav-main">
+      <ul>
+       
+       
+    <li><a href="/docs/" >文档</a></li>
+    
+    <li><a href="/blog/" >更新日志</a></li>
+    
+    <li><a href="/faq/" >常见问题</a></li>
+    
+      </ul>
+    </nav>
+  </div>
+ </header>
+  <main>
+  <div id="main">
+    <div id="hero">
+      <h1> 更新历史日志 </h1>
+      <p class="hero-lead">
+           .
+      </p>
+
+    </div> 
+    <div id="kube-component" class="content">
+    
+<nav id="contents">
+    <ol class="js-toc">
+    </ol>
+</nav>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded",
+function(){
+tocbot.init({
+
+tocSelector: '.js-toc',
+
+contentSelector: '.content',
+
+headingSelector: 'h3'
+})
+}
+);
+</script>
+
+
+
+    
+
+<h2 id="更新日志">更新日志</h2>
+
+<h3 id="4-2-1-2016-12-11">4.2.1 - 2016-12-11</h3>
+
+<ul>
+<li>解决<code>SimpleCache</code>类遗留问题导致的错误 <a href="http://git.oschina.net/free/Mybatis_PageHelper/issues/143">#143</a> fix by <a href="https://github.com/dhhua">dhhua</a></li>
+</ul>
+
+<h3 id="4-2-0-2016-12-09">4.2.0 - 2016-12-09</h3>
+
+<ul>
+<li>使用新的方式进行分页，4.2版本是从5.0版本分离出来的一个特殊版本，这个版本兼容4.x的所有功能，5.0版本时为了简化分页逻辑，会去掉部分功能，所以4.2是4.x的最后一个版本。</li>
+<li>支持 MyBatis 3.1.0+ 版本</li>
+<li>增加对 Derby 数据库的支持</li>
+<li>对除 informix 外的全部数据库进行测试，全部通过</li>
+<li>PageHelper增加手动清除方法<code>clearPage()</code></li>
+<li>解决 SqlServer 多个<code>with(nolock)</code>时出错的问题</li>
+<li>对CountMappedStatement 进行缓存，配置方式见BaseSqlUtil 319行</li>
+<li>由于SqlServer的sql处理特殊，因此增加了两个SQL缓存，具体配置参考SqlServerDialect类</li>
+<li>添加 sqlserver 别名进行排序功能，在解析sql时，会自动将使用的别名转换成列名 by panmingzhi</li>
+<li>新增<code>sqlCacheClass</code>参数，该参数可选，可以设置sql缓存实现类，默认为<code>SimpleCache</code>，当项目包含guava时，使用<code>GuavaCache</code>，也可以通过参数<code>sqlCacheClass</code>指定自己的实现类，有关详情看<code>com.github.pagehelper.cache</code>包。</li>
+<li>解决#135，增加/<em>keep orderby</em>/注解，SQL中包含该注释时，count查询时不会移出order by</li>
+<li>sqlserver没有orderby时，使用<code>order by rand()</code> #82 #118</li>
+</ul>
+
+<h3 id="4-1-6-2016-06-05">4.1.6 - 2016-06-05</h3>
+
+<ul>
+<li>通过间接处理字符串解决SqlServer中不支持<code>with(nolock)</code>的问题#86，详情可以看<code>SqlServerParser</code>和<code>SqlServer2012Dialect</code></li>
+</ul>
+
+<h3 id="4-1-5-2016-05-29">4.1.5 - 2016-05-29</h3>
+
+<ul>
+<li>更新<code>PageProviderSqlSource</code>，支持3.4.0版本的<code>Provider</code>注解方式的分页#102</li>
+<li>解决<code>SqlUtil</code>未初始化<code>PARAMS</code>属性导致的错误</li>
+</ul>
+
+<h3 id="4-1-4-2016-05-12">4.1.4 - 2016-05-12</h3>
+
+<ul>
+<li>解决<code>closeConn</code>未设置时，默认值被覆盖变成<code>false</code>的问题#97</li>
+<li><code>closeConn</code>不只对动态数据源有效，当没有设置<code>dialect</code>属性自动获取数据库类型的时候同样有效</li>
+<li>解决关闭tomcat的时候提示线程安全问题#98，这个问题不会导致内存溢出，已经增加处理</li>
+</ul>
+
+<h3 id="4-1-3-2016-03-31">4.1.3 - 2016-03-31</h3>
+
+<ul>
+<li>解决反射类没有完全捕获异常的问题#94</li>
+<li>把SqlServer类所有private都改成了protected，方便继承修改#93</li>
+</ul>
+
+<h3 id="4-1-2-2016-03-06">4.1.2 - 2016-03-06</h3>
+
+<ul>
+<li>增加可配参数<code>closeConn</code>，当使用动态数据源时，分页插件获取jdbcUrl后，控制是否关闭当前连接，默认<code>true</code>关闭</li>
+<li>count查询改为<code>count(0)</code>，分库分表情况下的效率可能更高</li>
+</ul>
+
+<h3 id="4-1-1-2016-01-05">4.1.1 - 2016-01-05：</h3>
+
+<ul>
+<li>解决动态数据源时获取连接后未关闭的严重bug#80</li>
+<li>解决动态数据源时SqlSource和parser绑定导致不能切换方言的问题</li>
+</ul>
+
+<h3 id="4-1-0-2015-12-30">4.1.0 - 2015-12-30：</h3>
+
+<ul>
+<li>增加<code>autoRuntimeDialect</code>参数，允许在运行时根据多数据源自动识别对应方言的分页（暂时不支持自动选择<code>sqlserver2012</code>，只能使用<code>sqlserver</code>）。</li>
+<li>去掉了4.0.3版本增加的<code>returnPageInfo</code>参数，接口返回值不支持<code>PageInfo</code>类型，可以使用下面<code>ISelect</code>中演示的方法获取</li>
+<li>增加对<code>SqlServer2012</code>的支持，需要手动指定<code>dialect=sqlserver2012</code>，否则会使用2005的方式进行分页</li>
+<li>jsqlparser升级到0.9.4版本，使用jar包时必须用最新的0.9.4版本，使用Maven会自动依赖0.9.4</li>
+<li>增加<code>ISelect</code>接口，方便调用，使用方法可以参考<code>src/test/java/com.github.pagehelper.test.basic.TestISelect</code>测试。</li>
+</ul>
+
+<h3 id="使用该接口可以参考如下用法-返回值为-page-或-pageinfo">使用该接口可以参考如下用法(返回值为<code>Page</code>或<code>PageInfo</code>)：</h3>
+
+<pre><code class="language-java">//jdk6,7用法，创建接口
+Page&lt;Country&gt; page = PageHelper.startPage(1, 10).setOrderBy(&quot;id desc&quot;).doSelectPage(new ISelect() {
+    @Override
+    public void doSelect() {
+        countryMapper.selectGroupBy();
+    }
+});
+//jdk8 lambda用法
+Page&lt;Country&gt; page = PageHelper.startPage(1, 10).setOrderBy(&quot;id desc&quot;).doSelectPage(()-&gt; countryMapper.selectGroupBy());
+//为了说明可以链式使用，上面是单独setOrderBy(&quot;id desc&quot;)，也可以直接如下
+Page&lt;Country&gt; page = PageHelper.startPage(1, 10, &quot;id desc&quot;).doSelectPage(()-&gt; countryMapper.selectGroupBy());
+
+//也可以直接返回PageInfo，注意doSelectPageInfo方法和doSelectPage
+pageInfo = PageHelper.startPage(1, 10).setOrderBy(&quot;id desc&quot;).doSelectPageInfo(new ISelect() {
+    @Override
+    public void doSelect() {
+        countryMapper.selectGroupBy();
+    }
+});
+//对应的lambda用法
+pageInfo = PageHelper.startPage(1, 10).setOrderBy(&quot;id desc&quot;).doSelectPageInfo(() -&gt; countryMapper.selectGroupBy());
+
+//count查询，返回一个查询语句的count数
+long total = PageHelper.count(new ISelect() {
+    @Override
+    public void doSelect() {
+        countryMapper.selectLike(country);
+    }
+});
+//lambda
+total = PageHelper.count(()-&gt;countryMapper.selectLike(country));
+</code></pre>
+
+<h3 id="4-0-3-2015-11-09">4.0.3 - 2015-11-09：</h3>
+
+<ul>
+<li><p><code>PageHelper</code>新增3个<code>offsetPage</code>方法，参数主要是<code>offset</code>和<code>limit</code>，允许不规则分页</p></li>
+
+<li><p>新增两个可配参数<code>supportMethodsArguments</code>和<code>returnPageInfo</code>（该参数在4.1.0版本去掉），具体含义和用法请看<a href="https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/zh/HowToUse.md">如何使用分页插件</a>中的参数介绍</p></li>
+</ul>
+
+<h3 id="4-0-2-2015-11-02">4.0.2 - 2015-11-02</h3>
+
+<ul>
+<li><p>简化<code>Page&lt;E&gt;</code>类，包含排序条件<code>orderBy</code></p></li>
+
+<li><p><code>dialect</code>参数是数据库名称时不区分大小写</p></li>
+
+<li><p><code>dialect</code>参数可以设置为实现<code>com.github.pagehelper.parser.Parser</code>接口的实现类全限定名称</p></li>
+
+<li><p>增加对<code>h2</code>数据库的支持</p></li>
+
+<li><p>将<code>OrderByHelper</code>(排序插件)融合到<code>PageHelper</code>中，移除<code>OrderByHelper</code></p></li>
+
+<li><p>该版本调整比较大，但对开发人员影响较小，为以后扩展和完善提供方便</p></li>
+</ul>
+
+<h3 id="4-0-1-2015-09-10">4.0.1 -2015-09-10</h3>
+
+<ul>
+<li><p>解决<a href="http://git.oschina.net/free/Mybatis_PageHelper/issues/60">#60 -使用RPC时，因Page类引用了RowBounds，导致反序列化失败</a> by <a href="http://git.oschina.net/mxb">马金凯</a></p></li>
+
+<li><p>这个改动主要是去掉了<code>Page&lt;E&gt;</code>构造方法中的<code>RowBounds</code>，用<code>int[]</code>数组替换了<code>RowBounds</code></p></li>
+</ul>
+
+<h3 id="4-0-0-2015-07-13">4.0.0 - 2015-07-13</h3>
+
+<ul>
+<li><p>配置属性<code>dialect</code>不在强制要求，可以不写，分页插件会自动判断</p></li>
+
+<li><p>解决从request中获取分页参数时的错误,感谢<b>探路者☆</b></p></li>
+
+<li><p><code>PageInfo</code>增加空构造方法，所有属性增加<code>setter</code>方法</p></li>
+
+<li><p>增加对排序的支持</p></li>
+
+<li><p>可以单独使用<code>PageHelper.orderBy(String orderBy)</code>对查询语句增加排序，也可以配合<code>startPage</code>的其他方法使用</p></li>
+
+<li><p>可以使用<code>PageHelper.startPage(int start,int size,String orderBy)</code>对分页查询进行排序</p></li>
+
+<li><p>修改分页查询的处理逻辑，主要是将原<code>sqlSource</code>包装成可以分页和排序的<code>sqlSource</code></p></li>
+</ul>
+
+<h3 id="3-7-5-2015-06-12">3.7.5 - 2015-06-12</h3>
+
+<ul>
+<li><p>增加对MyBatis3.2.0以上版本的校验，如果是不是3.2.0以上版本，会抛出异常提示</p></li>
+
+<li><p>解决3.7.1更新中实际没有解决的入参为不可变<code>Map</code>类型时的错误</p></li>
+</ul>
+
+<h3 id="3-7-4-2015-05-26">3.7.4 - 2015-05-26</h3>
+
+<ul>
+<li><p>为了支持<code>3.3.0</code>去掉了分页插件自带的<code>SytemObjectMetaObject</code>类(该类在早期版本为了支持3.2.0以前的MyBatis)</p></li>
+
+<li><p>最新支持MyBatis - 3.2.0到最新3.3.0版本</p></li>
+</ul>
+
+<h3 id="3-7-3-2015-05-22">3.7.3 - 2015-05-22</h3>
+
+<ul>
+<li><p><code>Page</code>继承的<code>ArrayList</code>，会根据<code>pageSize</code>初始化大小，这就导致当<code>pageSize</code>过大（如<code>Integer.MAX_VALUE</code>），实际数据量很小时的内存溢出，此处改为初始化大小为0的<code>List</code>。</p></li>
+
+<li><p>当想查询某页后面的全部数据时，可以使用<code>PageHelper.startPage(pageNum, Integer.MAX_VALUE)</code>进行分页，<code>RowBounds(offset, Integer.MAX_VALUE)</code>一样。</p></li>
+
+<li><p>针对<code>PageHelper.startPage(1, Integer.MAX_VALUE)</code>优化，会取消分页，直接查询全部数据（能起到<code>pageSizeZero</code>参数所起的作用）。</p></li>
+
+<li><p>针对<code>RowBounds(0, Integer.MAX_VALUE)</code>优化，会取消分页，直接查询全部数据（能起到<code>pageSizeZero</code>参数所起的作用）。</p></li>
+</ul>
+
+<h3 id="3-7-2-2015-05-13">3.7.2 - 2015-05-13</h3>
+
+<ul>
+<li>jsqlparser解析sql会抛出Error异常，由于只捕获Exception，所以导致部分解析失败的sql无法使用嵌套方式处理，所以修改为捕获<code>Throwable</code>。</li>
+</ul>
+
+<h3 id="3-7-1-2015-05-05">3.7.1 - 2015-05-05</h3>
+
+<ul>
+<li>增加<code>Infomix</code>数据库支持，设置<code>dialect</code>值为<code>infomix</code>即可</li>
+<li>解决入参为不可变<code>Map</code>类型时的错误</li>
+</ul>
+
+<h3 id="3-7-0-2015-04-21">3.7.0 - 2015-04-21</h3>
+
+<ul>
+<li>由于<code>orderby</code>参数经常被错误认为的使用，因此该版本全面移除了<code>orderby</code></li>
+<li><code>Page&lt;E&gt;</code>移除<code>orderby</code>属性</li>
+<li><code>PageHelper</code>的<code>startPage</code>方法中，移除包含<code>orderby</code>参数的方法，sqlserver相关包含该参数的全部移除</li>
+<li>对SqlServer进行分页查询时，请在sql中包含order by语句，否则会抛出异常</li>
+<li>当<code>offsetAsPageNum=false</code>的时候，由于PageNum问题，<code>RowBounds</code>查询的时候<code>reasonable</code>会强制为false，已解决</li>
+<li>少数情况下的select中包含单个函数查询时，会使用嵌套的count查询</li>
+</ul>
+
+<h3 id="3-6-4-2015-04-05">3.6.4 - 2015-04-05</h3>
+
+<ul>
+<li>重构，将原来的内部类全部独立出来，尤其是<code>Parser</code>接口以及全部实现。
+现在可以直接使用<code>Parser</code>，使用方法如下：</li>
+</ul>
+
+<pre><code class="language-java">   String originalSql = &quot;Select * from country o where id &gt; 10 order by id desc &quot;;
+
+   Parser parser = AbstractParser.newParser(&quot;mysql&quot;);
+   //获取count查询sql
+   String countSql = parser.getCountSql(originalSql);
+   //获取分页sql，这种方式不适合sqlserver数据库
+   String pageSql = parser.getPageSql(originalSql);
+
+   //sqlserver用下面的方法
+   SqlServer sqlServer = new SqlServer();
+   pageSql = sqlServer.convertToPageSql(originalSql, 1, 10);
+</code></pre>
+
+<h3 id="3-6-3-2015-03-10">3.6.3 - 2015-03-10</h3>
+
+<ul>
+<li>解决了一个潜在的bug，对<a href="http://git.oschina.net/free/Mapper">通用Mapper</a>中的<code>SqlMapper</code>进行分页时，需要使用这个版本</li>
+</ul>
+
+<h3 id="3-6-2-2015-03-09">3.6.2 - 2015-03-09</h3>
+
+<ul>
+<li>本次更新只是增加了一个异常提示，当错误的配置了多个分页插件时，会有更友好的错误提示：</li>
+</ul>
+
+<blockquote>
+<p>分页插件配置错误:请不要在系统中配置多个分页插件(使用Spring时,mybatis-config.xml和Spring<bean>配置方式，请选择其中一种，不要同时配置多个分页插件)！</p>
+</blockquote>
+
+<h3 id="3-6-1-2015-02-28">3.6.1 - 2015-02-28</h3>
+
+<ul>
+<li><p>解决select distinct导致count查询结果不正确的bug#35</p></li>
+
+<li><p>完善测试</p></li>
+</ul>
+
+<h3 id="3-6-0-2015-02-03">3.6.0 - 2015-02-03</h3>
+
+<ul>
+<li><p>支持db2数据库</p></li>
+
+<li><p>支持sqlserver(2005+)数据库</p></li>
+
+<li><p>sqlserver注意事项：</p>
+
+<ul>
+<li>请先保证你的SQL可以执行</li>
+<li>sql中最好直接包含order by，可以自动从sql提取</li>
+<li>如果没有order by，可以通过入参提供，但是需要自己保证正确(<b>3.7.0版本以后，移除了该参数，请在sql中包含order by</b>)</li>
+<li>如果sql有order by，可以通过orderby参数覆盖sql中的order by</li>
+<li>order by的列名不能使用别名(<code>UNION,INTERSECT,MINUS,EXCEPT</code>等复杂sql不受限制，具体可以自己尝试)</li>
+<li>表和列使用别名的时候不要使用单引号(&lsquo;)</li>
+</ul></li>
+
+<li><p>简单修改结构</p></li>
+
+<li><p><code>startPage</code>方法返回值从<code>void</code>改为<code>Page</code>，获取<code>Page</code>后可以修改参数值</p></li>
+
+<li><p><code>Page</code>增加一个针对sqlserver的属性<code>orderBy</code>(<b>3.7.0版本以后，移除了该属性</b>)，用法看上面的<b>注意事项</b></p></li>
+
+<li><p><code>Page</code>增加了一个链式赋值的方法，可以像下面这样使用：
+<code>PageHelper.startPage(1,10).count(false).reasonable(true).pageSizeZero(false)</code></p></li>
+
+<li><p><code>PageHelper</code>增加了<code>startPage(int pageNum, int pageSize,String orderBy)</code>方法(<b>3.7.0版本以后，移除了该方法</b>)，针对sqlserver</p></li>
+</ul>
+
+<h3 id="3-5-1-2015-01-20">3.5.1 - 2015-01-20</h3>
+
+<ul>
+<li><p>解决<a href="http://git.oschina.net/free/Mybatis_PageHelper/issues/25">bug#25</a>，当参数是null并且是动态查询时，由于加入分页参数，导致参数不在是null，因而会导致部分判断出错，导致异常。</p></li>
+
+<li><p>上面这个bug会影响使用了动态标签并且允许入参为null的所有查询，虽然并不常见，但是建议各位使用最新版本</p></li>
+</ul>
+
+<h3 id="3-5-0-2015-01-11">3.5.0 - 2015-01-11</h3>
+
+<ul>
+<li>增加更丰富的调用方法<a href="http://git.oschina.net/free/Mybatis_PageHelper/issues/23">#23</a>
+
+<ul>
+<li><code>startPage(int pageNum, int pageSize)</code></li>
+<li><code>startPage(int pageNum, int pageSize, boolean count)</code></li>
+<li>+<code>startPage(int pageNum, int pageSize, boolean count, Boolean reasonable)</code></li>
+<li>+<code>startPage(int pageNum, int pageSize, boolean count, Boolean reasonable, Boolean pageSizeZero)</code></li>
+<li>+<code>startPage(Object params)</code><b>注：只能是<code>Map</code>或<code>ServletRequest</code>类型</b></li>
+</ul></li>
+</ul>
+
+<p>参数中的<code>reasonable</code>、<code>pageSizeZero</code>都可以覆盖默认配置，如果传<code>null</code>会用默认配置。</p>
+
+<ul>
+<li><p>为了支持<code>startPage(Object params)</code>方法，增加了一个<code>params</code>参数来配置参数映射，用于从<code>Map</code>或<code>ServletRequest</code>中取值，详细内容看文档下面的具体介绍。</p></li>
+
+<li><p>解决一个<code>&lt;foreach&gt;</code>标签使用对象内部属性循环时的bug<a href="http://git.oschina.net/free/Mybatis_PageHelper/issues/24">#24</a></p></li>
+</ul>
+
+<h3 id="3-4-2-2014-12-27">3.4.2 - 2014-12-27</h3>
+
+<ul>
+<li><code>PageInfo</code>中的<code>judgePageBoudary</code>方法修改：
+<code>java
+isLastPage = pageNum == pages &amp;&amp; pageNum != 1;
+//改为
+isLastPage = pageNum == pages;
+</code></li>
+</ul>
+
+<h3 id="3-4-1-2014-12-24">3.4.1 - 2014-12-24</h3>
+
+<ul>
+<li><p>重大bug修复，<code>SqlParser</code>解析sql失败的时候返回了不带<code>count(*)</code>的sql，导致查询失败。</p></li>
+
+<li><p>产生原因，由于<code>SqlParser</code>在系统中出现的位置修改后，导致这里出现错误。</p></li>
+
+<li><p>强烈推荐各位更新到最新版本。</p></li>
+</ul>
+
+<h3 id="v3-4-0-2014-12-18">v3.4.0 - 2014-12-18</h3>
+
+<ul>
+<li><p>增加了对<code>@SelectProvider</code>注解方法的支持，不使用这种方式的不影响</p></li>
+
+<li><p>对基本逻辑进行修改，减少反射调用和获取<code>BoundSql</code>次数</p></li>
+</ul>
+
+<h3 id="v3-3-2-2014-12-10">v3.3.2 - 2014-12-10</h3>
+
+<ul>
+<li><code>PageInfo</code> 增加序列化。</li>
+</ul>
+
+<h3 id="v3-3-1bug修复-2014-12-07">v3.3.1bug修复 - 2014-12-07</h3>
+
+<ul>
+<li>动态sql时，判断条件不会出现在ParameterMappings中，会导致获取不到属性。通常是因为判断条件中的属性没有出现在<code>#{}</code>中。</li>
+</ul>
+
+<h3 id="v3-3-0">v3.3.0</h3>
+
+<ol>
+<li><p>对<code>MappedStatement</code>对象进行缓存，包括count查询的<code>MappedStatement</code>以及分页查询的<code>MappedStatement</code>，分页查询改为预编译查询。</p></li>
+
+<li><p>独立的<code>SqlUtil</code>类，由于原来的<code>PageHelper</code>太复杂，因此将拦截器外的其他代码独立到<code>SqlUtil</code>中，方便查看代码和维护。<code>SqlUtil</code>中增加<code>Parser</code>接口，提供一个抽象的<code>SimpleParser</code>实现，不同数据库的分页代码通过继承<code>SimpleParser</code>实现。</p></li>
+
+<li><p>特殊的<code>Parser</code>实现类<code>SqlParser</code>类，这是一个独立的java类，主要提供了更高性能的count查询sql，可以根据sql自动改为<code>count(*)</code>查询，自动去除不需要的<code>order by</code>语句，如果需要使用该类，只要把该类放到<code>SqlUtil</code>类相同的包下即可，同时需要引入Jar包<code>jsqlparser-0.9.1.jar</code>。</p></li>
+
+<li><p>增强的<code>PageInfo</code>类，<code>PageInfo</code>类包含了分页几乎所有需要用到的属性值，减少了对分页逻辑的过多投入。</p></li>
+
+<li><p>分页合理化，自动处理pageNum的异常情况。例如当pageNum&lt;=0时，会设置pageNum=1，然后查询第一页。当pageNum&gt;pages(总页数)时，自动将pageNum=pages，查询最后一页。</p></li>
+
+<li><p>增加对<code>PostgreSQL</code>,<code>MariaDB</code>,<code>SQLite</code>支持。其中<code>MariaDB</code>,<code>SQLite</code>和<code>Mysql</code>分页一样。</p></li>
+</ol>
+
+<h3 id="v3-2-3">v3.2.3</h3>
+
+<ol>
+<li><p>解决<code>mysql</code>带有<code>for update</code>时分页错误的问题。</p></li>
+
+<li><p>当<code>pageSize</code>（或<code>RowBounds</code>的<code>limit</code>）<code>&lt;=0</code> 时不再进行分页查询，只会进行count查询（RowBounds需要配置进行count查询），相当于用分页查询来做count查询了。</p></li>
+
+<li><p>增加了<code>pageSizeZero</code>参数，当<code>pageSizeZero=true</code>时，如果<code>pageSize=0</code>（或<code>RowBounds.limit</code>=0），就会查询全部的结果。这个参数对于那些在特殊情况下要查询全部结果的人有用。配置该参数后会与上面第二条冲突，解决方法就是如果只想查询count，就设置<code>pageSize&lt;0</code>（如 <code>-1</code>），只要不等于0（或者不配置pageSizeZero）就不会出现全部查询的情况。</p></li>
+
+<li><p>这个版本没有包含count查询时自动去除<code>order by</code>的功能，这个功能将会添加到3.3.0版本中。</p></li>
+
+<li><p>为了便于本项目的统一管理和发布，本项目会和github上面同步，项目会改为Maven管理的结构。</p></li>
+</ol>
+
+<h3 id="v3-2-2">v3.2.2</h3>
+
+<ol>
+<li><p>简单重构优化代码。</p></li>
+
+<li><p>新增<code>PageInfo</code>包装类，对分页结果Page<E>进行封装，方便EL使用。</p></li>
+
+<li><p>将<code>SystemMetaObject</code>类的<code>fromObject</code>方法内置到分页插件中，方便低版本的Mybatis使用该插件。</p></li>
+</ol>
+
+<h3 id="v3-2-1">v3.2.1</h3>
+
+<ol>
+<li><p>新增<code>offsetAsPageNum</code>参数，用来控制<code>RowBounds</code>中的<code>offset</code>是否作为<code>pageNum</code>使用，<code>pageNum</code>和<code>startPage</code>中的含义相同，<code>pageNum</code>是页码。该参数默认为<code>false</code>，使用默认值时，不需要配置该参数。</p></li>
+
+<li><p>新增<code>rowBoundsWithCount</code>参数，用来控制使用<code>RowBounds</code>时是否执行<code>count</code>查询。该参数默认为<code>false</code>，使用默认值时，不需要配置该参数。</p></li>
+</ol>
+
+<h3 id="v3-2-0">v3.2.0</h3>
+
+<ol>
+<li><p>增加了对<code>Hsqldb</code>的支持，主要目的是为了方便测试使用<code>Hsqldb</code></p></li>
+
+<li><p>增加了该项目的一个测试项目<a href="http://git.oschina.net/free/Mybatis-Sample">Mybatis-Sample</a>，测试项目数据库使用<code>Hsqldb</code></p></li>
+
+<li><p>增加MIT协议</p></li>
+</ol>
+
+<h3 id="v3-1-2">v3.1.2</h3>
+
+<ol>
+<li>解决count sql在<code>oracle</code>中的错误</li>
+</ol>
+
+<h3 id="v3-1-1">v3.1.1</h3>
+
+<ol>
+<li>统一返回值为<code>Page&lt;E&gt;</code>（可以直接按<code>List</code>使用）,方便在页面使用EL表达式，如<code>${page.pageNum}</code>,<code>${page.total}</code><br /></li>
+</ol>
+
+<h3 id="v3-1-0">v3.1.0</h3>
+
+<ol>
+<li><p>解决了<code>RowBounds</code>分页的严重BUG，原先会在物理分页基础上进行内存分页导致严重错误，已修复</p></li>
+
+<li><p>增加对MySql的支持，该支持由<a href="http://my.oschina.net/lujianing">鲁家宁</a>增加。</p></li>
+</ol>
+
+<h3 id="v3-0">v3.0</h3>
+
+<ol>
+<li><p>现在支持两种形式的分页，使用<code>PageHelper.startPage</code>方法或者使用<code>RowBounds</code>参数</p></li>
+
+<li><p><code>PageHelper.startPage</code>方法修改，原先的<code>startPage(int pageNum, int pageSize)</code>默认求count，新增的<code>startPage(int pageNum, int pageSize, boolean count)</code>设置<code>count=false</code>可以不执行count查询</p></li>
+
+<li><p>移除<code>endPage</code>方法，现在本地变量<code>localPage</code>改为取出后清空本地变量。</p></li>
+
+<li><p>修改<code>Page&lt;E&gt;</code>类，继承<code>ArrayList&lt;E&gt;</code></p></li>
+
+<li><p>关于两种形式的调用，请看示例代码</p></li>
+</ol>
+
+<h3 id="v2-1">v2.1</h3>
+
+<ol>
+<li><p>解决并发异常</p></li>
+
+<li><p>分页sql改为直接拼sql</p></li>
+</ol>
+
+<h3 id="v2-0">v2.0</h3>
+
+<ol>
+<li><p>支持Mybatis缓存，count和分页同时支持（二者同步）</p></li>
+
+<li><p>修改拦截器签名，拦截<code>Executor</code></p></li>
+
+<li><p>将<code>Page&lt;E&gt;</code>类移到外面，方便调用</p></li>
+</ol>
+
+<h3 id="v1-0">v1.0</h3>
+
+<ol>
+<li><p>支持<code>&lt;foreach&gt;</code>等标签的分页查询</p></li>
+
+<li><p>提供便捷的使用方式</p></li>
+</ol>
+
+
+    
+    </div>
+    </div>
+</main>
+  <footer></footer>
+
+
+  <script src="https://pagehelper.github.io/js/kube.js" type="text/javascript">
+  </script>
+  <script src="https://pagehelper.github.io/js/kube.legenda.js" type="text/javascript">
+  </script>
+  <script src="https://pagehelper.github.io/js/master.js" type="text/javascript">
+  </script>
+</body>
+
+</html>
