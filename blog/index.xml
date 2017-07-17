@@ -6,10 +6,19 @@
     <description>Recent content in 更新日志 on MyBatis 分页插件 PageHelper</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Jun 2017 17:35:04 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 17 Jul 2017 17:35:04 +0800</lastBuildDate>
     
 	<atom:link href="https://pagehelper.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>5.0.2 版本发布</title>
+      <link>https://pagehelper.github.io/blog/5-0-3/</link>
+      <pubDate>Mon, 17 Jul 2017 17:35:04 +0800</pubDate>
+      
+      <guid>https://pagehelper.github.io/blog/5-0-3/</guid>
+      <description> 5.0.3 -2017-06-20  解决supportMethodsArguments参数不起作用的问题，由于之前默认为false，不起作用后效果为true，建议升级到最新版本。  </description>
+    </item>
     
     <item>
       <title>5.0.2 版本发布</title>

@@ -45,7 +45,7 @@
       <pubDate>Sat, 03 Jun 2017 17:49:01 +0800</pubDate>
       
       <guid>https://pagehelper.github.io/docs/changelog_en/</guid>
-      <description>5.0.2 - 2017-05-30  Page&amp;lt;E&amp;gt; implements Closeable interface, in JDK7+ which can use the in try () call, it will automatically call PageHelper.clearPage ();#58。 fixed: DB2 paging must be specified sub-query alias, or an exception will occur #52 fixed：if page.size() == 0 then pageInfo.isIsLastPage() is false #50  5.0.1 - 2017-04-23  Add the new parameter countColumn used to configure the automatic count column, the default value 0, that is, `count(0).</description>
+      <description>5.0.3 -2017-06-20  Solve the supportMethodsArguments parameter problem. It is recommended to upgrade to the latest version.  5.0.2 - 2017-05-30  Page&amp;lt;E&amp;gt; implements Closeable interface, in JDK7+ which can use the in try () call, it will automatically call PageHelper.clearPage ();#58 fixed: DB2 paging must be specified sub-query alias, or an exception will occur #52 fixed page.size() == 0 then pageInfo.isIsLastPage() is false #50  5.0.1 - 2017-04-23  Add the new parameter countColumn used to configure the automatic count column, the default value 0, that is, `count(0).</description>
     </item>
     
     <item>

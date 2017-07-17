@@ -139,12 +139,18 @@ headingSelector: 'h3'
 
     
 
+<h3 id="5-0-3-2017-06-20">5.0.3 -2017-06-20</h3>
+
+<ul>
+<li>Solve the <code>supportMethodsArguments</code> parameter problem. It is recommended to upgrade to the latest version.</li>
+</ul>
+
 <h3 id="5-0-2-2017-05-30">5.0.2 - 2017-05-30</h3>
 
 <ul>
-<li><code>Page&lt;E&gt;</code> implements <code>Closeable</code> interface, in JDK7+ which can use the in <code>try ()</code> call, it will automatically call <code>PageHelper.clearPage ();</code><a href="https://github.com/pagehelper/Mybatis-PageHelper/issues/58">#58</a>。</li>
+<li><code>Page&lt;E&gt;</code> implements <code>Closeable</code> interface, in JDK7+ which can use the in <code>try ()</code> call, it will automatically call <code>PageHelper.clearPage ();</code><a href="https://github.com/pagehelper/Mybatis-PageHelper/issues/58">#58</a></li>
 <li>fixed: DB2 paging must be specified sub-query alias, or an exception will occur <a href="https://github.com/pagehelper/Mybatis-PageHelper/issues/52">#52</a></li>
-<li>fixed：if <code>page.size() == 0</code> then <code>pageInfo.isIsLastPage()</code> is <code>false</code> <a href="https://github.com/pagehelper/Mybatis-PageHelper/issues/50">#50</a></li>
+<li>fixed <code>page.size() == 0</code> then <code>pageInfo.isIsLastPage()</code> is <code>false</code> <a href="https://github.com/pagehelper/Mybatis-PageHelper/issues/50">#50</a></li>
 </ul>
 
 <h3 id="5-0-1-2017-04-23">5.0.1 - 2017-04-23</h3>
